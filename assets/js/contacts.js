@@ -20,7 +20,21 @@ function validateForm(selector) {
 
 validateForm('.js-form .form-field');
 
+var minimumSubmitTime = 2500;
+
 Array.from(document.querySelectorAll('.js-form')).forEach(function(form) {
+    form.dataset.startedAt = Date.now();
+    form.dataset.interacted = 'false';
+
+    Array.from(form.querySelectorAll('.form-field')).forEach(function(field) {
+        field.addEventListener('focus', function() {
+            form.dataset.interacted = 'true';
+        });
+        field.addEventListener('input', function() {
+            form.dataset.interacted = 'true';
+        });
+    });
+
     form.addEventListener('submit', function(e) {
         submitForm(e, form);
     });
@@ -39,6 +53,12 @@ function submitForm(e, form) {
     }
 
     if (form.querySelector('[name="_honey"]').value !== '') {
+        return;
+    }
+
+    if (form.dataset.interacted !== 'true' || Date.now() - Number(form.dataset.startedAt) < minimumSubmitTime) {
+        status.textContent = 'Please try sending again.';
+        status.className = 'contacts__form-status js-form-status contacts__form-status--error';
         return;
     }
 

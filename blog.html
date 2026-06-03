@@ -195,19 +195,20 @@
             <form class="js-form" action="https://formsubmit.co/ajax/galinka@me.com" method="post">
               <input type="hidden" name="_subject" value="New portfolio contact message">
               <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="true">
               <input class="form-hidden-field" type="text" name="_honey" tabindex="-1" autocomplete="off">
               <div class="form-group">
-                <input class="form-field js-field-name" name="name" type="text" placeholder="Your name" required>
+                <input class="form-field js-field-name" name="name" type="text" placeholder="Your name" maxlength="100" required>
                 <span class="form-validation"></span>
                 <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
               </div>
               <div class="form-group">
-                <input class="form-field js-field-email" name="email" type="email"  placeholder="Your e-mail" required>
+                <input class="form-field js-field-email" name="email" type="email" placeholder="Your e-mail" maxlength="160" required>
                 <span class="form-validation"></span>
                 <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
               </div>
               <div class="form-group">
-                <textarea class="form-field js-field-message" name="message" placeholder="Type the message here" required></textarea>
+                <textarea class="form-field js-field-message" name="message" placeholder="Type the message here" minlength="10" maxlength="3000" required></textarea>
                 <span class="form-validation"></span>
                 <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
               </div>
@@ -232,7 +233,7 @@
     <script src="assets/js/progress-list.js"></script>
     <script src="assets/js/section.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
-    <script src="assets/js/contacts.js"></script>
+    <script src="assets/js/contacts.js?v=20260603"></script>
     <script src="assets/js/mbclicker.min.js"></script>
     <script src="assets/js/site-btn.js"></script>
     <script src="assets/js/style-switcher.js"></script>
