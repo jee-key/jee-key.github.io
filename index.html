@@ -7,6 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="stylesheet" href="assets/css/monochrome.css">
+  <link rel="stylesheet" href="assets/css/contact-form.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Inconsolata" rel="stylesheet">
   <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
 </head>
@@ -308,7 +309,7 @@
       </div>
     </div>
     </br>
-      <a href="assets/public/Galina_Kozyreva_CV.pdf" class="section_btn site-btn"><img src="assets/img/img_btn_icon.png" alt="">Download CV (updated 07/2024)</a>
+      <a href="assets/public/Galina_Kozyreva_CV.pdf" class="section_btn site-btn"><img src="assets/img/img_btn_icon.png" alt="">Download CV (updated 04/2025)</a>
     
   </section>
 <!--Resume-->
@@ -402,7 +403,10 @@
         <div class="col-md-7 col-lg-5">
           <div class="contacts__form">
             <p class="contacts__form-title">Or just write me a letter here_</p>
-            <form class="js-form" action="mailto:galinka@me.com" method="post" enctype="text/plain">
+            <form class="js-form" action="https://formsubmit.co/ajax/galinka@me.com" method="post">
+              <input type="hidden" name="_subject" value="New portfolio contact message">
+              <input type="hidden" name="_template" value="table">
+              <input class="form-hidden-field" type="text" name="_honey" tabindex="-1" autocomplete="off">
               <div class="form-group">
                 <input class="form-field js-field-name" name="name" type="text" placeholder="Your name" required>
                 <span class="form-validation"></span>
@@ -419,6 +423,7 @@
                 <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
               </div>
               <button class="site-btn site-btn--form" type="submit" value="Send">Send</button>
+              <p class="contacts__form-status js-form-status" aria-live="polite"></p>
             </form>
           </div>
           <div class="footer">

@@ -29,24 +29,53 @@ Array.from(document.querySelectorAll('.js-form')).forEach(function(form) {
 function submitForm(e, form) {
     e.preventDefault();
 
+    var status = form.querySelector('.js-form-status');
+    var button = form.querySelector('button[type="submit"]');
+    var originalButtonText = button.textContent;
+
     if (!form.checkValidity()) {
         form.reportValidity();
         return;
     }
 
-    var name = form.querySelector('.js-field-name').value.trim();
-    var email = form.querySelector('.js-field-email').value.trim();
-    var message = form.querySelector('.js-field-message').value.trim();
-    var recipient = 'galinka@me.com';
-    var subject = 'Contact form message from ' + name;
-    var body = [
-        'Name: ' + name,
-        'Email: ' + email,
-        '',
-        message
-    ].join('\n');
+    if (form.querySelector('[name="_honey"]').value !== '') {
+        return;
+    }
 
-    window.location.href = 'mailto:' + recipient +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(body);
+    status.textContent = 'Sending...';
+    status.className = 'contacts__form-status js-form-status';
+    button.disabled = true;
+    button.textContent = 'Sending';
+
+    fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: {
+            Accept: 'application/json'
+        }
+    })
+        .then(function(response) {
+            return response.json().catch(function() {
+                return {};
+            }).then(function(data) {
+                if (!response.ok) {
+                    throw new Error(data.message || 'Could not send the message.');
+                }
+
+                return data;
+            });
+        })
+        .then(function() {
+            form.reset();
+            status.textContent = 'Thanks, your message has been sent.';
+            status.classList.add('contacts__form-status--success');
+        })
+        .catch(function(error) {
+            status.textContent = error.message || 'Could not send the message. Please email me directly.';
+            status.classList.add('contacts__form-status--error');
+        })
+        .finally(function() {
+            button.disabled = false;
+            button.textContent = originalButtonText;
+        });
 }

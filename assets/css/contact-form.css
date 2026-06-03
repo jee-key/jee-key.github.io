@@ -1,0 +1,22 @@
+.contacts .contacts__form .form-hidden-field {
+  display: none !important;
+}
+
+.contacts .contacts__form .site-btn--form[disabled] {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.contacts .contacts__form .contacts__form-status {
+  min-height: 20px;
+  margin: 12px 0 0;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: "Roboto Mono", monospace;
+  opacity: 0.85;
+}
+
+.contacts .contacts__form .contacts__form-status--error {
+  opacity: 1;
+}

@@ -33,6 +33,28 @@
   }
 
   .contacts__form{
+    .form-hidden-field{
+      display: none !important;
+    }
+
+    .site-btn--form[disabled]{
+      cursor: wait;
+      opacity: 0.65;
+    }
+
+    .contacts__form-status{
+      min-height: 20px;
+      margin: 12px 0 0;
+      color: $color-text-light;
+      font-size: 14px;
+      line-height: 20px;
+      font-family: $font-family-title;
+      opacity: 0.85;
+    }
+
+    .contacts__form-status--error{
+      opacity: 1;
+    }
 
     .form-group{
       margin-bottom: 15px;
